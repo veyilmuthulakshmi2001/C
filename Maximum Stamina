@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int i ,j ,count,temp=0;
+    scanf("%d",&count);
+    int arr[count];
+    int stack[count];
+    for(i=0;i<count;i++){
+        stack[i]=0;
+    }
+    for(i=0;i<count;i++){
+        scanf("%d",&arr[i]);
+    }
+    stack[count-1]=arr[count-1];
+    temp = arr[count-1];
+    for(i=count-2;i>=0;i--){
+        for(j=i+1;j<count;j++)
+        if(arr[i]<arr[j]){
+            stack[i]=arr[i]^stack[j];
+        break;
+        }
+    if(stack[i]==0)
+        stack[i] = arr[i];
+    if(stack[i]>temp)
+        temp = stack[i];
+    }
+    printf("%d",temp);
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
